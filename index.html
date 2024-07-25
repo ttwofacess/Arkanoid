@@ -42,7 +42,21 @@
         ctx.closePath();
     };
 
-    function drawPaddle() {};
+    function drawPaddle() {
+        ctx.drawImage(
+            $sprite,
+            29,
+            174,
+            paddleWidth,
+            paddleHeight,
+            paddleX,
+            paddleY,
+            paddleWidth,
+            paddleHeight
+        )
+        
+    };
+
     function drawBricks() {};
 
     function collisionDetection() {};
@@ -72,4 +86,6 @@
         paddleMovement();
         window.requestAnimationFrame(draw);
     };
+
+    draw()
 </script>
