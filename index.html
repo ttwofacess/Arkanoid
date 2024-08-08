@@ -93,7 +93,7 @@
         const counterX = canvas.width - 60;  //posicion X del contador
         const counterY = 20;  //posicion Y del contador
         ctx.font = '16px Arial';  //tamaño de fuente
-        ctx.fillStyle = '#000';  //color de fuente
+        ctx.fillStyle = '#ff7a33';  //color de fuente
         ctx.fillText(counterString, counterX, counterY);  //texto a dibujar
     }
 
@@ -266,6 +266,7 @@
         drawPaddle();
         drawBricks();
         drawUI();
+        drawCounter();  // dibujar contador
         //colisiones y movimientos
         collisionDetection();
         ballMovement();
