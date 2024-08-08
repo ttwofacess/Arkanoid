@@ -87,6 +87,16 @@
         }
     }
 
+    //dibujar contador
+    function drawCounter() {
+        const counterString = counter.toString().padStart(6, '0');
+        const counterX = canvas.width - 60;  //posicion X del contador
+        const counterY = 20;  //posicion Y del contador
+        ctx.font = '16px Arial';  //tamaño de fuente
+        ctx.fillStyle = '#000';  //color de fuente
+        ctx.fillText(counterString, counterX, counterY);  //texto a dibujar
+    }
+
     function drawBall() {
         ctx.beginPath();  //iniciar el trazado
         ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
