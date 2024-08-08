@@ -242,7 +242,11 @@
     let gameOver = false;
 
     function draw() {
-        if(gameOver) return;
+        if(gameOver) {
+            counter = 0;  // resetear el contador
+            return
+        };
+
         window.requestAnimationFrame(draw);
 
         const msNow = window.performance.now();
