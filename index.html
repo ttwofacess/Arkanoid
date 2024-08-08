@@ -161,6 +161,7 @@
                 if(isBallSameXAsBrick && isBallSameYAsBrick) {
                     dy = -dy;
                     currentBrick.status = BRICK_STATUS.DESTROYED;
+                    counter += 5;  // aumentar el contador en 5 puntos
                 }
             }
         }
