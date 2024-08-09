@@ -92,9 +92,10 @@
         const counterString = counter.toString().padStart(6, '0');
         const counterX = canvas.width - 60;  //posicion X del contador
         const counterY = 20;  //posicion Y del contador
-        ctx.font = '16px Arial';  //tamaño de fuente
+        ctx.font = '600 16px Arial';  //tamaño de fuente
         ctx.fillStyle = '#ff7a33';  //color de fuente
-        ctx.fillText(counterString, counterX, counterY);  //texto a dibujar
+        ctx.fillText('Puntos:', counterX -60, counterY);  //texto a dibujar
+        ctx.fillText(counterString, counterX, counterY);  //valor del contador a dibujar
     }
 
     function drawBall() {
