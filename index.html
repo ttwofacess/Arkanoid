@@ -144,6 +144,14 @@
         }
     };
 
+    //pause the game
+    function startGame() {
+        isPaused = false;
+        if(!gameLoop) {
+            gameLoop = setInterval(draw, msPerFrame);
+        }
+    }
+
     function drawUI() {
         ctx.fillText(`FPS: ${framePerSec}`,5, 10);
     }
