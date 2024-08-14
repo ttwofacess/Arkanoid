@@ -15,6 +15,36 @@
         display: block;
         box-shadow: 0px 0px 20px 0px rgb(0, 0, 0, 0.4);
     }
+
+    #startButton {
+        background-image: linear-gradient(to bottom, #000, #09f);
+        background-size: 100% 2px;
+        background-position: 0% 100%;
+        border: 2px solid #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        max-width: 45vw;
+        margin: 5px auto;
+        height: 45px;
+        box-sizing: border-box;
+        color: #fff;
+    }
+
+    #startButton:hover {
+        background-position: 0% 0%;
+        transition: background-position 0.6s ease-out;
+    }
+
+    #startButton:active {
+        transform: scale(0.9);
+        transition: transform 0.2s ease-in;
+    }
 </style>
 
 <canvas></canvas>
@@ -96,11 +126,11 @@
     //dibujar contador
     function drawCounter() {
         const counterString = counter.toString().padStart(6, '0');
-        const counterX = canvas.width - 60;  //posicion X del contador
+        const counterX = canvas.width -80;  //posicion X del contador
         const counterY = 20;  //posicion Y del contador
-        ctx.font = '600 16px Arial';  //tamaño de fuente
-        ctx.fillStyle = '#ff7a33';  //color de fuente
-        ctx.fillText('Puntos:', counterX -60, counterY);  //texto a dibujar
+        ctx.font = '800 18px Monospace';  //tamaño de fuente
+        ctx.fillStyle = '#ff7a33';   //color de fuente
+        ctx.fillText('Puntos:', counterX -80, counterY);  //texto a dibujar
         ctx.fillText(counterString, counterX, counterY);  //valor del contador a dibujar
     }
 
