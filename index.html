@@ -1,5 +1,16 @@
 <title>Arkanoid en JavaScript</title>
-<button id="startButton">Jugar</button>
+
+<div id="highScoreBoard" style="display: none;">
+    <div id="highScoreContent">
+        <h2>Mejores Puntuaciones</h2>
+        <ul id="scoreList"></ul>
+        <button id="closeButton">Cerrar</button>
+    </div>
+</div>
+
+<button class="btn" id="hallClick">Salon de la fama</button>
+<button class="btn" id="startButton">Jugar</button>
+
 <style>
     body {
         background-color: #f0f0f0;
@@ -16,7 +27,7 @@
         box-shadow: 0px 0px 20px 0px rgb(0, 0, 0, 0.4);
     }
 
-    #startButton {
+    .btn {
         background-image: linear-gradient(to bottom, #000, #09f);
         background-size: 100% 2px;
         background-position: 0% 100%;
@@ -45,6 +56,38 @@
         transform: scale(0.9);
         transition: transform 0.2s ease-in;
     }
+
+    #highScoreBoard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#highScoreContent {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#scoreList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#closeButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
 </style>
 
 <canvas></canvas>
@@ -53,6 +96,9 @@
 <img hidden id="bricks" src="./assets/img/bricks.png" alt="Sprite Bricks Arkanoid" />
 
 <script>
+    const hall = document.getElementById('hallClick');
+    hall.addEventListener('click', showHighScores);
+
     const startButton = document.getElementById('startButton');
     startButton.addEventListener('click', startGame);
 
@@ -78,7 +124,11 @@
     const lowestScore = highScores[highScores.length - 1]?.score || 0;
 
         if (score > lowestScore) {
-            const name = prompt("¡Nuevo High Score! Ingresa tus iniciales:");
+            //const name = prompt("¡Nuevo High Score! Ingresa tus iniciales:");
+            let name = prompt("¡Nuevo High Score! Ingresa tus iniciales:");
+            // Limitar a las primeras 3 iniciales
+            name = name.slice(0, 3).toUpperCase();
+            
             const newScore = { name, score };
 
             // Añadir el nuevo puntaje y ordenar
@@ -91,13 +141,45 @@
             // Guardar los puntajes actualizados en localStorage
             localStorage.setItem('highScores', JSON.stringify(highScores));
         }
+
+        // Mostrar las puntuaciones
+        showHighScores();
+    }
+
+    // Mostrar los mejores puntajes
+    function showHighScores() {
+        const highScoreBoard = document.getElementById('highScoreBoard');
+        const scoreList = document.getElementById('scoreList');
+
+        // Limpiar la lista actual
+        scoreList.innerHTML = '';
+
+        // Añadir los puntajes al listado
+        highScores.forEach((score, index) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${index + 1}. ${score.name} - ${score.score}`;
+            scoreList.appendChild(listItem);
+        });
+
+        // Mostrar el cuadro de puntuaciones
+        highScoreBoard.style.display = 'flex';
+    
+        // Agregar evento para el botón de cerrar
+        const closeButton = document.getElementById('closeButton');
+        closeButton.addEventListener('click', () => {
+            highScoreBoard.style.display = 'none';
+            gameOver = false;
+            startGame();  // Reinicia el juego
+        });
     }
 
     /* Ball variables */
     const ballRadius = 3;
+
     //Ball position
     let x = canvas.width / 2;
     let y = canvas.height - 30;
+
     //ball speed
     let dx = -3;
     let dy = -3;
@@ -351,6 +433,7 @@
             // Llamar a checkHighScore para verificar si el puntaje actual está entre los 10 mejores
             checkHighScore(counter);
             counter = 0;  // resetear el contador
+            isPaused = true; // Pausar el juego para que no se recargue
             return
         };
 
