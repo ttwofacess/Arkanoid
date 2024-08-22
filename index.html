@@ -69,6 +69,30 @@
     let gameLoop = null;  
     let isPaused = true;  //to track the game state
     let counter = 0;  // contador de puntos
+
+    // Crear o cargar los mejores puntajes desde localStorage
+    let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+    // Comprobar si el puntaje actual es el mejor
+    function checkHighScore(score) {
+    const lowestScore = highScores[highScores.length - 1]?.score || 0;
+
+        if (score > lowestScore) {
+            const name = prompt("¡Nuevo High Score! Ingresa tus iniciales:");
+            const newScore = { name, score };
+
+            // Añadir el nuevo puntaje y ordenar
+            highScores.push(newScore);
+            highScores.sort((a, b) => b.score - a.score);
+
+            // Mantener solo los 10 mejores puntajes
+            highScores = highScores.slice(0, 10);
+
+            // Guardar los puntajes actualizados en localStorage
+            localStorage.setItem('highScores', JSON.stringify(highScores));
+        }
+    }
+
     /* Ball variables */
     const ballRadius = 3;
     //Ball position
@@ -324,6 +348,8 @@
         };
 
         if(gameOver) {
+            // Llamar a checkHighScore para verificar si el puntaje actual está entre los 10 mejores
+            checkHighScore(counter);
             counter = 0;  // resetear el contador
             return
         };
