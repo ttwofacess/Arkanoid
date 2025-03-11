@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./assets/ico/favicon.ico" type="image/png" />
+    <link rel="stylesheet" href="./styles.css">
     <title>Arkanoid en JavaScript</title>
   </head>
   <body>
@@ -17,120 +18,6 @@
 
     <button class="btn" id="hallClick">Salon de la fama</button>
     <button class="btn" id="startButton">Jugar</button>
-
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-      body {
-        background-color: #f0f0f0;
-        display: grid;
-        place-content: center;
-        /*new code for smartphones*/
-        max-width: 100%;
-        overflow-x: hidden;
-      }
-
-      canvas {
-        background: url("./assets/img/bkg.png");
-        border: 4px solid #000;
-        border-bottom: transparent;
-        box-shadow: 0px 0px 20px 0px rgb(0, 0, 0, 0.4);
-        display: block;
-        margin: 0 auto;
-        width: 98%;
-      }
-
-      .btn {
-        background-image: linear-gradient(to bottom, #000, #09f);
-        background-position: 0% 100%;
-        background-size: 100% 2px;
-        border: 2px solid #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        box-sizing: border-box;
-        color: #fff;
-        cursor: pointer;
-        font-family: Poppins;
-        font-size: 1rem;
-        font-weight: 600;
-        height: 45px;
-        margin: 5px auto;
-        max-width: 80vw;
-        /* min-width: 30vw; */
-        padding: 10px 20px;
-        text-align: center;
-        /* width: 85%; */
-        width: auto;
-      }
-
-      .btn:hover {
-        background-position: 0% 0%;
-        transition: background-position 0.6s ease-out;
-      }
-
-      .btn:active {
-        transform: scale(0.9);
-        transition: transform 0.2s ease-in;
-      }
-
-      #leftButton, #rightButton {
-        bottom: 5%;
-        font-size: 1.3rem;
-        height: 50px;
-        position: absolute;
-        width: 100px;
-      }
-
-      #leftButton {
-        left: 20px;
-      }
-
-      #rightButton {
-        right: 20px;
-      }
-
-      #highScoreBoard {
-        align-items: center;
-        background-color: rgba(0, 0, 0, 0.8);
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        left: 0;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-      }
-
-      #highScoreContent {
-        /* background-color: #fff; */
-        background-color: #032b44;
-        border-radius: 10px;
-        color: #f7f7f7;
-        font-family: Poppins;
-        font-weight: 600;
-        padding: 20px;
-        text-align: center;
-      }
-
-      #scoreList {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      #closeButton {
-        background-color: darkgray;
-        border-radius: 10%;
-        color: #032b44;
-        cursor: pointer;
-        font-family: Poppins;
-        font-size: 18px;
-        font-weight: 600;
-        margin-top: 20px;
-        padding: 10px 20px;
-      }
-
-    </style>
 
     <canvas></canvas>
 
@@ -486,7 +373,7 @@
           }
         }
 
-        /* From ChatGPT: Eventos tactiles para los botones */
+        /* Eventos tactiles para los botones */
         const leftButton = document.getElementById("leftButton");
         const rightButton = document.getElementById("rightButton");
 
