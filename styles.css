@@ -84,6 +84,8 @@ canvas {
   width: 100%;
   max-width: 448px;
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  /* Agregar margen superior para separación del último botón */
+  margin-top: 15px;
 }
 
 canvas:hover {
@@ -110,6 +112,17 @@ canvas:hover {
     0 4px 15px var(--shadow-light),
     0 2px 4px var(--shadow-medium);
   min-width: 120px;
+  /* Agegar margen para separacion */
+  margin: 8px;
+}
+
+/* Separación específica para los botones principales */
+#hallClick {
+  margin-bottom: 15px;
+}
+
+#startButton {
+  margin-bottom: 20px;
 }
 
 .btn::before {
