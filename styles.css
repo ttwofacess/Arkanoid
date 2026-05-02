@@ -127,6 +127,8 @@ body > * {
   display: block;
   transform: scale(0.61);
   transform-origin: center;
+  border-radius: 12px;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.4));
 }
 
 @keyframes logoFloat {
