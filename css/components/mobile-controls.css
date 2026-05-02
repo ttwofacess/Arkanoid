@@ -1,0 +1,64 @@
+/* Controles móviles */
+.mobile-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 80px; /* Separacion entre botones */
+  justify-content: center;
+  pointer-events: none;
+  z-index: 100;
+}
+
+#leftButton, #rightButton {
+  background: linear-gradient(135deg, #0d1a35 0%, #060d1f 100%);
+  border: 1.5px solid rgba(74, 143, 232, 0.5);
+  border-radius: 50%;
+  color: #7bafd4;
+  font-size: 1.5rem;
+  font-weight: 700;
+  height: 60px;
+  width: 60px;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 15px rgba(74, 143, 232, 0.2),
+    0 4px 15px rgba(0, 0, 20, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  position: static;
+  font-family: "Orbitron", monospace;
+}
+
+#leftButton:active, #rightButton:active {
+  background: linear-gradient(135deg, #1e4d9a 0%, #0d2247 100%);
+  color: #d6eaff;
+  border-color: rgba(74, 143, 232, 0.9);
+  box-shadow: 0 0 25px rgba(74, 143, 232, 0.5);
+  transform: scale(0.95);
+}
+
+@media (max-width: 360px) {
+  .mobile-controls {
+    gap: 60px; /* Reducir separación en pantallas pequeñas */
+  }
+  
+  #leftButton, #rightButton {
+    height: 55px;
+    width: 55px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-controls {
+    gap: 120px;
+  }
+  
+  #leftButton, #rightButton {
+    height: 65px;
+    width: 65px;
+    font-size: 1.6rem;
+  }
+}
