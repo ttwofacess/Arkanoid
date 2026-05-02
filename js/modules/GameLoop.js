@@ -32,6 +32,7 @@ const GameLoop = (() => {
           const gameEnded = onGameUpdate(framePerSec);
           if (gameEnded && onGameOver) {
             onGameOver();
+            return;
           }
         }
       }
