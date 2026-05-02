@@ -1,0 +1,26 @@
+/* Game Logo */
+.game-logo-wrapper {
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0 0 20px rgba(74, 143, 232, 0.5)) drop-shadow(0 0 40px rgba(192, 57, 43, 0.3));
+  animation: logoFloat 4s ease-in-out infinite;
+}
+
+.game-logo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  transform: scale(0.61);
+  transform-origin: center;
+  border-radius: 12px;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.4));
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px); filter: drop-shadow(0 0 20px rgba(74, 143, 232, 0.5)) drop-shadow(0 0 40px rgba(192, 57, 43, 0.3)); }
+  50% { transform: translateY(-6px); filter: drop-shadow(0 0 30px rgba(74, 143, 232, 0.7)) drop-shadow(0 0 50px rgba(192, 57, 43, 0.4)); }
+}

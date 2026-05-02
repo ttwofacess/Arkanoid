@@ -1,0 +1,15 @@
+@import './base/variables.css';
+@import './base/reset.css';
+@import './base/global.css';
+
+@import './layout/layout.css';
+
+@import './components/logo.css';
+@import './components/buttons.css';
+@import './components/canvas.css';
+@import './components/controls.css';
+@import './components/mobile-controls.css';
+@import './components/modal.css';
+@import './components/score.css';
+
+@import './utilities/animations.css';

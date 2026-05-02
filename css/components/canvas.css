@@ -1,0 +1,28 @@
+/* Canvas mejorado */
+canvas {
+  background: url("../../assets/img/bkg.png"); /* Ajuste de ruta relativo a /css/components/ */
+  border: 2px solid rgba(74, 143, 232, 0.5);
+  border-radius: 4px;
+  box-shadow: 
+    0 0 30px rgba(74, 143, 232, 0.2),
+    0 0 60px rgba(74, 143, 232, 0.08),
+    0 10px 25px rgba(0, 0, 20, 0.7),
+    inset 0 0 30px rgba(0, 0, 0, 0.3);
+  display: block;
+  width: 100%;
+  max-width: 448px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  margin-top: 10px;
+}
+
+canvas:hover {
+  box-shadow: 
+    0 15px 35px var(--shadow-heavy),
+    0 6px 15px var(--shadow-medium);
+}
+
+@media (max-width: 768px) {
+  canvas {
+    border-radius: 8px;
+  }
+}

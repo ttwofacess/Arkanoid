@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap");
+
+/* Variables CSS - Space / Retro Arcade Theme matching Darkanoid logo */
+:root {
+  --bg-primary: #03060f;
+  --bg-secondary: #060d1f;
+  --bg-tertiary: #0d1a35;
+  --text-primary: #e8f4fd;
+  --text-secondary: #7bafd4;
+  --accent-primary: #4a8fe8;
+  --accent-secondary: #c0392b;
+  --accent-red: #e74c3c;
+  --accent-blue: #2980b9;
+  --accent-glow: #5dade2;
+  --border-color: #1a3a5c;
+  --shadow-light: rgba(74, 143, 232, 0.15);
+  --shadow-medium: rgba(74, 143, 232, 0.25);
+  --shadow-heavy: rgba(0, 0, 20, 0.8);
+  --canvas-border: #1e4d7a;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --error-color: #e74c3c;
+  --star-color: rgba(255, 255, 255, 0.7);
+}
