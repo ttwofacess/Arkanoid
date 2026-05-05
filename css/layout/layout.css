@@ -20,8 +20,14 @@ body > canvas {
   grid-column: 1 / -1;
 }
 
-body > .mobile-controls {
+body > #donateButton {
   grid-row: 4;
+  grid-column: 1 / -1;
+  margin: 15vh auto 8px auto;
+}
+
+body > .mobile-controls {
+  grid-row: 5;
   grid-column: 1 / -1;
 }
 
