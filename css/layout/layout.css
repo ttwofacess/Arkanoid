@@ -23,7 +23,7 @@ body > canvas {
 body > #donateButton {
   grid-row: 4;
   grid-column: 1 / -1;
-  margin: 8px auto;
+  margin: 10vh auto 8px auto;
 }
 
 body > .mobile-controls {
