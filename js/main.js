@@ -1,8 +1,13 @@
+import { initDonateModal } from './modules/DonateModal.js';
+
 // ==========================================
 // main.js - Application entry point
 // Coordinates all modules
 // ==========================================
 (function main() {
+  // Initialize donate modal
+  initDonateModal();
+
   // Get DOM elements
   const hallButton = document.getElementById("hallClick");
   const startBtn = document.getElementById("startButton");

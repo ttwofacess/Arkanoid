@@ -8,11 +8,11 @@
     <title>Arkanoid en JavaScript</title>
   </head>
   <body>
-    <div id="highScoreBoard" style="display: none">
-      <div id="highScoreContent">
+    <div id="highScoreBoard" class="modal" style="display: none">
+      <div id="highScoreContent" class="modal-content">
         <h2>Mejores Puntuaciones</h2>
         <ul id="scoreList"></ul>
-        <button id="closeButton">Jugar</button>
+        <button id="closeButton" class="btn">Jugar</button>
       </div>
     </div>
 
@@ -24,6 +24,50 @@
     <button class="btn" id="startButton">Jugar</button>
 
     <canvas></canvas>
+
+    <!-- DONATE -->
+    <button id="donateButton" class="btn">Donar</button>
+
+    <div id="donateModal" class="modal" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Donar</h2>
+        <div class="crypto-options">
+          <div class="crypto-option">
+            <div class="crypto-icon">
+              <img src="./assets/icons/crypto/bitcoin.svg" alt="Bitcoin">
+            </div>
+            <div class="crypto-info">
+              <span class="crypto-name">Bitcoin</span>
+              <input type="text" value="bc1qxz4nxj8rzxzsnwj8u4rq46wy8dnf5h7yvzaqs2" readonly>
+            </div>
+            <button class="copy-button">Copiar</button>
+          </div>
+
+          <div class="crypto-option">
+            <div class="crypto-icon">
+              <img src="./assets/icons/crypto/litecoin.svg" alt="Litecoin">
+            </div>
+            <div class="crypto-info">
+              <span class="crypto-name">Litecoin</span>
+              <input type="text" value="M8snytUjZP13KVTEHA4JCbHfy31Ve2xMr4" readonly>
+            </div>
+            <button class="copy-button">Copiar</button>
+          </div>
+
+          <div class="crypto-option">
+            <div class="crypto-icon">
+              <img src="./assets/icons/crypto/usdt.svg" alt="USDT (TRC20)">
+            </div>
+            <div class="crypto-info">
+              <span class="crypto-name">USDT (TRC20)</span>
+              <input type="text" value="TYsPkPyHbWN8cPuoDA7DohwhAdXWkVbQHm" readonly>
+            </div>
+            <button class="copy-button">Copiar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <img
       hidden
@@ -53,7 +97,7 @@
     <script src="./js/modules/HighScoreManager.js"></script>
     <script src="./js/modules/EventManager.js"></script>
     <script src="./js/modules/GameLoop.js"></script>
-    <script src="./js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
     <!-- <script src="./main.js"></script> -->
   </body>
 </html>
