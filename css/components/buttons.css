@@ -101,3 +101,19 @@
     max-width: 200px;
   }
 }
+
+/* Fixed Side Donate Button */
+#donateButton {
+  position: fixed;
+  left: 0;
+  top: 2vh;
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: top left;
+  z-index: 1000;
+  margin: 0;
+  padding: 8px 16px;
+  clip-path: none;
+  border-radius: 0 0 4px 4px;
+  border-left: none;
+  /* Always vertical and stuck to the edge */
+}
