@@ -1,69 +1,100 @@
+import { t } from './i18n.js';
+import { BrickManager } from './BrickManager.js';
+
 // ==========================================
 // modules/Renderer.js
 // Handles all canvas drawing operations
 // ==========================================
-const Renderer = (() => {
-  const canvas = document.querySelector("canvas");
-  const ctx = canvas.getContext("2d");
-  const $sprite = document.querySelector("#sprite");
-  const $bricks = document.querySelector("#bricks");
+export const Renderer = (() => {
+  // Constants for dimensions
+  const CANVAS_WIDTH = 448;
+  const CANVAS_HEIGHT = 400;
+  const BALL_RADIUS = 3;
+  const PADDLE_HEIGHT = 10;
+  const PADDLE_WIDTH = 50;
 
-  canvas.width = 448;
-  canvas.height = 400;
-
-  const ballRadius = 3;
-  const paddleHeight = 10;
-  const paddleWidth = 50;
+  // Private helper to get elements (ensures they are found when needed)
+  function getElements() {
+    const canvas = document.querySelector("canvas");
+    if (canvas && (canvas.width !== CANVAS_WIDTH || canvas.height !== CANVAS_HEIGHT)) {
+      canvas.width = CANVAS_WIDTH;
+      canvas.height = CANVAS_HEIGHT;
+    }
+    return {
+      canvas,
+      ctx: canvas ? canvas.getContext("2d") : null,
+      $sprite: document.querySelector("#sprite"),
+      $bricks: document.querySelector("#bricks")
+    };
+  }
 
   function cleanCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const { canvas, ctx } = getElements();
+    if (ctx) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
   }
 
   function drawBall(x, y) {
-    ctx.beginPath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = "#fff";
-    ctx.fill();
-    ctx.closePath();
+    const { ctx } = getElements();
+    if (ctx) {
+      ctx.beginPath();
+      ctx.arc(x, y, BALL_RADIUS, 0, Math.PI * 2);
+      ctx.fillStyle = "#fff";
+      ctx.fill();
+      ctx.closePath();
+    }
   }
 
   function drawPaddle(paddleX, paddleY) {
-    ctx.drawImage(
-      $sprite, 29, 174, paddleWidth, paddleHeight,
-      paddleX, paddleY, paddleWidth, paddleHeight
-    );
+    const { ctx, $sprite } = getElements();
+    if (ctx && $sprite) {
+      ctx.drawImage(
+        $sprite, 29, 174, PADDLE_WIDTH, PADDLE_HEIGHT,
+        paddleX, paddleY, PADDLE_WIDTH, PADDLE_HEIGHT
+      );
+    }
   }
 
   function drawCounter(counter) {
-    const counterString = counter.toString().padStart(6, "0");
-    const counterX = canvas.width - 80;
-    const counterY = 20;
-    ctx.font = "800 18px Monospace";
-    ctx.fillStyle = "#ff7a33";
-    ctx.fillText("Puntos:", counterX - 80, counterY);
-    ctx.fillText(counterString, counterX, counterY);
+    const { canvas, ctx } = getElements();
+    if (canvas && ctx) {
+      const counterString = counter.toString().padStart(6, "0");
+      const counterX = canvas.width - 80;
+      const counterY = 20;
+      ctx.font = "800 18px Monospace";
+      ctx.fillStyle = "#ff7a33";
+      ctx.fillText(t("points"), counterX - 80, counterY);
+      ctx.fillText(counterString, counterX, counterY);
+    }
   }
 
   function drawUI(framePerSec) {
-    ctx.fillStyle = "#ffffff";
-    ctx.fillText(`FPS: ${framePerSec}`, 5, 10);
+    const { ctx } = getElements();
+    if (ctx) {
+      ctx.fillStyle = "#ffffff";
+      ctx.fillText(`FPS: ${framePerSec}`, 5, 10);
+    }
   }
 
   // Delegate brick drawing to BrickManager
   function drawBricks() {
-    BrickManager.drawBricks(ctx, $bricks);
+    const { ctx, $bricks } = getElements();
+    if (ctx && $bricks) {
+      BrickManager.drawBricks(ctx, $bricks);
+    }
   }
 
   function getCanvasDimensions() {
-    return { width: canvas.width, height: canvas.height };
+    return { width: CANVAS_WIDTH, height: CANVAS_HEIGHT };
   }
 
   function getPaddleDimensions() {
-    return { width: 50, height: 10 };
+    return { width: PADDLE_WIDTH, height: PADDLE_HEIGHT };
   }
 
   function getBallRadius() {
-    return 3;
+    return BALL_RADIUS;
   }
 
   return {

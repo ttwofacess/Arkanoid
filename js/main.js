@@ -1,10 +1,21 @@
+import { applyTranslations } from './modules/i18n.js';
 import { initDonateModal } from './modules/DonateModal.js';
+import { GameState } from './modules/GameState.js';
+import { BrickManager } from './modules/BrickManager.js';
+import { Renderer } from './modules/Renderer.js';
+import { Physics } from './modules/Physics.js';
+import { HighScoreManager } from './modules/HighScoreManager.js';
+import { EventManager } from './modules/EventManager.js';
+import { GameLoop } from './modules/GameLoop.js';
 
 // ==========================================
 // main.js - Application entry point
 // Coordinates all modules
 // ==========================================
 (function main() {
+  // Initialize translations
+  applyTranslations();
+
   // Initialize donate modal
   initDonateModal();
 
@@ -157,14 +168,6 @@ import { initDonateModal } from './modules/DonateModal.js';
   }
 
   // Initialize event system
-  // We need a temporary state to bind events, but events just set flags
-  const tempState = {
-    rightPressed: false, leftPressed: false,
-    setRightPressed: function(v) { this.rightPressed = v; },
-    setLeftPressed: function(v) { this.leftPressed = v; },
-    getRightPressed: () => this.rightPressed,
-    getLeftPressed: () => this.leftPressed
-  };
   EventManager.initEvents({
     setRightPressed: (v) => { if (currentGameState) currentGameState.setRightPressed(v); },
     setLeftPressed: (v) => { if (currentGameState) currentGameState.setLeftPressed(v); },
@@ -173,22 +176,31 @@ import { initDonateModal } from './modules/DonateModal.js';
   });
 
   // Attach UI button events
-  hallButton.addEventListener("click", showHallOfFame);
-  startBtn.addEventListener("click", () => {
-    if (currentGameState) {
-      currentGameState.setIsPaused(false);
-      if (currentGameState.getGameOver()) {
+  if (hallButton) {
+    hallButton.addEventListener("click", showHallOfFame);
+  }
+  
+  if (startBtn) {
+    startBtn.addEventListener("click", () => {
+      if (currentGameState) {
+        currentGameState.setIsPaused(false);
+        if (currentGameState.getGameOver()) {
+          resetAndStartGame();
+        }
+      } else {
         resetAndStartGame();
       }
-    } else {
-      resetAndStartGame();
-    }
-  });
+    });
+  }
 
   // Initial draw without starting game loop
-  Renderer.cleanCanvas();
-  BrickManager.initializeBricks();
-  Renderer.drawBricks();
-  Renderer.drawPaddle((448 - 50) / 2, 400 - 10 - 10);
-  Renderer.drawCounter(0);
+  try {
+    Renderer.cleanCanvas();
+    BrickManager.initializeBricks();
+    Renderer.drawBricks();
+    Renderer.drawPaddle((448 - 50) / 2, 400 - 10 - 10);
+    Renderer.drawCounter(0);
+  } catch (e) {
+    console.error("Initial draw failed:", e);
+  }
 })();

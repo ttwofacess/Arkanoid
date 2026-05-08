@@ -2,7 +2,7 @@
 // modules/GameState.js
 // Manages the core game state variables and flags
 // ==========================================
-const GameState = (() => {
+export const GameState = (() => {
   // Game flow flags
   let gameLoop = null;
   let isPaused = true;
@@ -68,7 +68,7 @@ const GameState = (() => {
     getBallDy, setBallDy,
     // Paddle
     getPaddleX, setPaddleX,
-    getPaddleY, getPaddleY,
+    getPaddleY,
     getRightPressed, setRightPressed,
     getLeftPressed, setLeftPressed
   };

@@ -1,3 +1,5 @@
+import { t } from './i18n.js';
+
 export function initDonateModal() {
   const donateButton = document.getElementById('donateButton');
   const modal = document.getElementById('donateModal');
@@ -28,7 +30,7 @@ export function initDonateModal() {
       if (input) {
         navigator.clipboard.writeText(input.value).then(() => {
           const original = button.textContent;
-          button.textContent = '¡Copiado!';
+          button.textContent = t("copied");
           button.style.backgroundColor = 'var(--success-color)';
           
           setTimeout(() => {

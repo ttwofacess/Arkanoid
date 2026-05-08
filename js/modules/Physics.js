@@ -2,7 +2,7 @@
 // modules/Physics.js
 // Handles ball movement, paddle movement, and boundary collisions
 // ==========================================
-const Physics = (() => {
+export const Physics = (() => {
   const PADDLE_SENSITIVITY = 8;
 
   // Update ball position and handle wall collisions

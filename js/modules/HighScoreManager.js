@@ -1,15 +1,17 @@
+import { t } from './i18n.js';
+
 // ==========================================
 // modules/HighScoreManager.js
 // Manages local storage high scores and UI display
 // ==========================================
-const HighScoreManager = (() => {
+export const HighScoreManager = (() => {
   let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
   function checkHighScore(score, onShowCallback) {
     const lowestScore = highScores[highScores.length - 1]?.score || 0;
 
     if (score > lowestScore) {
-      let name = prompt("¡Nuevo High Score! Ingresa tus iniciales:");
+      let name = prompt(t("newHighScore"));
       if (name) {
         name = name.slice(0, 3).toUpperCase();
         const newScore = { name, score };
