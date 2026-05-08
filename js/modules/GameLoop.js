@@ -2,7 +2,7 @@
 // modules/GameLoop.js
 // Manages the game loop, frame rate, and main draw/update coordination
 // ==========================================
-const GameLoop = (() => {
+export const GameLoop = (() => {
   const fps = 60;
   const msPerFrame = 1000 / fps;
   let msPrev = window.performance.now();

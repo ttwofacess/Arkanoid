@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,9 +10,9 @@
   <body>
     <div id="highScoreBoard" class="modal" style="display: none">
       <div id="highScoreContent" class="modal-content">
-        <h2>Mejores Puntuaciones</h2>
+        <h2 data-i18n="highScores"></h2>
         <ul id="scoreList"></ul>
-        <button id="closeButton" class="btn">Jugar</button>
+        <button id="closeButton" class="btn" data-i18n="play"></button>
       </div>
     </div>
 
@@ -20,18 +20,18 @@
       <img src="./assets/img/darkanoid.png" alt="Darkanoid Logo" class="game-logo" />
     </div>
 
-    <button class="btn" id="hallClick">Salon de la fama</button>
-    <button class="btn" id="startButton">Jugar</button>
+    <button class="btn" id="hallClick" data-i18n="hallOfFame"></button>
+    <button class="btn" id="startButton" data-i18n="play"></button>
 
     <canvas></canvas>
 
     <!-- DONATE -->
-    <button id="donateButton" class="btn">Donar</button>
+    <button id="donateButton" class="btn" data-i18n="donate"></button>
 
     <div id="donateModal" class="modal" role="dialog" aria-modal="true">
       <div class="modal-content">
         <span class="close-button">&times;</span>
-        <h2>Donar</h2>
+        <h2 data-i18n="donate"></h2>
         <div class="crypto-options">
           <div class="crypto-option">
             <div class="crypto-icon">₿</div>
@@ -39,7 +39,7 @@
               <span class="crypto-name">Bitcoin</span>
               <input type="text" value="bc1qxz4nxj8rzxzsnwj8u4rq46wy8dnf5h7yvzaqs2" readonly>
             </div>
-            <button class="copy-button">Copiar</button>
+            <button class="copy-button" data-i18n="copy"></button>
           </div>
 
           <div class="crypto-option">
@@ -48,7 +48,7 @@
               <span class="crypto-name">Litecoin</span>
               <input type="text" value="M8snytUjZP13KVTEHA4JCbHfy31Ve2xMr4" readonly>
             </div>
-            <button class="copy-button">Copiar</button>
+            <button class="copy-button" data-i18n="copy"></button>
           </div>
 
           <div class="crypto-option">
@@ -57,7 +57,7 @@
               <span class="crypto-name">USDT (TRC20)</span>
               <input type="text" value="TYsPkPyHbWN8cPuoDA7DohwhAdXWkVbQHm" readonly>
             </div>
-            <button class="copy-button">Copiar</button>
+            <button class="copy-button" data-i18n="copy"></button>
           </div>
         </div>
       </div>
@@ -77,21 +77,11 @@
     />
 
     <!-- Botones de control -->
-    <!-- <button id="leftButton" class="btn"><-</button>
-    <button id="rightButton" class="btn">-></button> -->
     <div class="mobile-controls">
       <button id="leftButton" class="btn">←</button>
       <button id="rightButton" class="btn">→</button>
     </div>
 
-    <script src="./js/modules/GameState.js"></script>
-    <script src="./js/modules/BrickManager.js"></script>
-    <script src="./js/modules/Renderer.js"></script>
-    <script src="./js/modules/Physics.js"></script>
-    <script src="./js/modules/HighScoreManager.js"></script>
-    <script src="./js/modules/EventManager.js"></script>
-    <script src="./js/modules/GameLoop.js"></script>
     <script type="module" src="./js/main.js"></script>
-    <!-- <script src="./main.js"></script> -->
   </body>
 </html>

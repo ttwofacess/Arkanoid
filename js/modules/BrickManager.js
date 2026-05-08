@@ -2,7 +2,7 @@
 // modules/BrickManager.js
 // Manages brick creation, rendering, collision detection, and status
 // ==========================================
-const BrickManager = (() => {
+export const BrickManager = (() => {
   const BRICK_STATUS = { ACTIVE: 1, DESTROYED: 0 };
   const brickRowCount = 6;
   const brickColumnCount = 13;

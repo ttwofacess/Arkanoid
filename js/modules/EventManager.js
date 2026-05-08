@@ -2,7 +2,7 @@
 // modules/EventManager.js
 // Handles keyboard and touch events for paddle control
 // ==========================================
-const EventManager = (() => {
+export const EventManager = (() => {
   let isInitialized = false;
 
   function initEvents(gameState) {
